@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Images from './components/Images.jsx';
 import Details from './components/Details.jsx';
+import '../dist/style.css';
 
 class RecommendationService extends React.Component {
   constructor(props) {

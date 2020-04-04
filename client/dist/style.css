@@ -1,4 +1,4 @@
-body {
+#recommendations body {
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.43;
@@ -79,4 +79,8 @@ span .item {
 
 .greyFont {
   color: rgb(113, 113, 113) !important;
+}
+
+.underReserve {
+  margin: 20px 50px;
 }
