@@ -13,7 +13,7 @@ class Details extends React.Component {
 
   componentDidMount() {
     $.ajax({
-      url: 'http://localhost:3003/listings',
+      url: '/listings',
       success: (data) => {
         this.setState({
           listings: data

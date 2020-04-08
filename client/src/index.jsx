@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListingData from './components/ListingData.jsx';
+import $ from 'jquery';
+import Images from './components/Images.jsx';
+import Details from './components/Details.jsx';
 
 class RecommendationService extends React.Component {
   constructor(props) {
@@ -10,8 +12,11 @@ class RecommendationService extends React.Component {
   render () {
     return (
       <div>
-        <div className="title">More homes you may like</div>
-        <ListingData />
+        <div>
+          <div className="title">More homes you may like</div>
+          <Images />
+          <Details />
+        </div>
       </div>);
   }
 }

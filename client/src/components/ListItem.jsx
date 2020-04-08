@@ -2,7 +2,7 @@ import React from 'react';
 
 const ListItem = (props) => (
 
-  <div className="item">
+  <span className="item">
     {console.log('props in list item:', props)}
     <div className="line1"><span className="greyFont">{props.detail.listing_type}
       <span> · </span>
@@ -24,6 +24,6 @@ const ListItem = (props) => (
         <span> / night</span>
       </span>
     </div>
-  </div>
+  </span>
 );
 export default ListItem;
