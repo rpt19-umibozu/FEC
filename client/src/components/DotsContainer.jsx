@@ -1,5 +1,3 @@
-//import React from 'react';
-//import ReactDOM from 'react-dom';
 import Dot from './Dot.jsx';
 
 class DotsContainer extends React.Component {
@@ -17,7 +15,7 @@ class DotsContainer extends React.Component {
     // console.log('props updated');
     if (prevProps.index < this.props.index && this.props.index > 2) {
       this.nextIndex();
-    } else if (prevProps.index > this.props.index && this.props.index < this.props.imgUrls.length - 2) {
+    } else if (prevProps.index > this.props.index && this.props.index < this.props.imgUrls.length - 3) {
       this.previousIndex();
     }
   }
@@ -60,6 +58,30 @@ class DotsContainer extends React.Component {
                 if (this.props.index === index) {
                   return (
                     <span key={index} className='dot active'>
+                      <Dot index={this.state.currentIndex}/>
+                    </span>
+                  );
+                } else if (Math.abs(this.props.index - index) === 1) {
+                  return (
+                    <span key={index} className='dot nearActiveOne'>
+                      <Dot index={this.state.currentIndex}/>
+                    </span>
+                  );
+                } else if (Math.abs(this.props.index - index) === 2) {
+                  return (
+                    <span key={index} className='dot nearActiveTwo'>
+                      <Dot index={this.state.currentIndex}/>
+                    </span>
+                  );
+                } else if (Math.abs(this.props.index - index) === 3) {
+                  return (
+                    <span key={index} className='dot nearActiveThree'>
+                      <Dot index={this.state.currentIndex}/>
+                    </span>
+                  );
+                } else if (Math.abs(this.props.index - index) === 4) {
+                  return (
+                    <span key={index} className='dot nearActiveFour'>
                       <Dot index={this.state.currentIndex}/>
                     </span>
                   );
