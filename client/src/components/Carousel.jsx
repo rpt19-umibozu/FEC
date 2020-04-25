@@ -9,19 +9,41 @@ import DotsContainer from './DotsContainer.jsx';
 //import $ from 'jquery';
 
 
-
 class Carousel extends React.Component {
   constructor (props) {
     super(props);
 
     this.state = {
+      isHovering: false,
       currentImageIndex: 0,
       imgUrls: sampleData[2]
     };
 
+    this.handleMouseHoverIn = this.handleMouseHoverIn.bind(this);
+    this.handleMouseHoverOut = this.handleMouseHoverOut.bind(this);
     this.previousSlide = this.previousSlide.bind(this);
     this.nextSlide = this.nextSlide.bind(this);
     this.addToFavorite = this.addToFavorite.bind(this);
+  }
+
+  handleMouseHoverIn() {
+    this.setState(this.changeHoverStateToTrue);
+  }
+
+  handleMouseHoverOut() {
+    this.setState(this.changeHoverStateToFalse);
+  }
+
+  changeHoverStateToFalse(state) {
+    return {
+      isHovering: true,
+    };
+  }
+
+  changeHoverStateToTrue(state) {
+    return {
+      isHovering: true,
+    };
   }
 
   componentDidUpdate(prevProps) {
@@ -86,18 +108,36 @@ class Carousel extends React.Component {
   render () {
     return (
       <span className="carousel">
-        <Favorite clickFunction={ this.addToFavorite }/>
-        <LeftArrow
-          direction="left"
-          clickFunction={ this.previousSlide }
-          type="image" />
+        {
+          this.state.isHovering &&
+          <span>
+            <Favorite clickFunction={ this.addToFavorite }/>
+          </span>
+        }
 
-        <ImageSlide url={ this.state.imgUrls[this.state.currentImageIndex]}/>
 
-        <RightArrow
-          direction="right"
-          clickFunction={ this.nextSlide }
-          type="image" />
+        {
+          this.state.isHovering &&
+          <span>
+            <LeftArrow
+              direction="left"
+              clickFunction={ this.previousSlide }
+              type="image" />
+          </span>
+        }
+
+        <span onMouseEnter={this.handleMouseHoverIn} onMouseLeave={this.handleMouseHoverOut}>
+          <ImageSlide url={ this.state.imgUrls[this.state.currentImageIndex]}/>
+        </span>
+        {
+          this.state.isHovering &&
+          <span>
+            <RightArrow
+              direction="right"
+              clickFunction={ this.nextSlide }
+              type="image" />
+          </span>
+        }
 
         <DotsContainer listingId={this.props.listingId.listing_id} index={this.state.currentImageIndex} imgUrls={this.state.imgUrls} />
 
